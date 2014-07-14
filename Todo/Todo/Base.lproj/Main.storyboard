@@ -7,7 +7,7 @@
         <!--Todo list-->
         <scene sceneID="eAs-cw-MNT">
             <objects>
-                <tableViewController id="VPH-b4-6oJ" customClass="TodoListTableTableViewController" customModule="Todo" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="VPH-b4-6oJ" customClass="TodoListTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="SAH-Qf-3xI">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -63,11 +63,20 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Add a todo" id="0aA-oX-rKJ">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="QZp-Bk-Hu7"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="DMI-Sx-IuI"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="QZp-Bk-Hu7">
+                            <connections>
+                                <segue destination="BXi-z8-yOe" kind="unwind" unwindAction="unwindToList:" id="YKL-3b-Unj"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="DMI-Sx-IuI">
+                            <connections>
+                                <segue destination="BXi-z8-yOe" kind="unwind" unwindAction="unwindToList:" id="kl8-Dt-3QB"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+                <exit id="BXi-z8-yOe" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1523" y="141"/>
         </scene>

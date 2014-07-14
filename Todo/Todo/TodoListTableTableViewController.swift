@@ -8,11 +8,19 @@
 
 import UIKit
 
-class TodoListTableTableViewController: UITableViewController {
+@objc(TodoListTableViewController) class TodoListTableViewController: UITableViewController {
 
-    @IBAction func unwindToList(segue: UIStoryboardSegue) {
-        
+    init(coder aDecoder: NSCoder!) {
+        super.init(coder: aDecoder)
     }
+    
+    func unwindToList(segue: UIStoryboardSegue) {
+    
+    }
+    
+//    @IBAction func unwindToList(segue: UIStoryboardSegue) {
+//        println("Unwinding")
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

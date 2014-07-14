@@ -38,6 +38,7 @@
 		E852EBD21973570100DC53E7 /* TodoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTests.swift; sourceTree = "<group>"; };
 		E852EBDC1973718800DC53E7 /* AddTodoItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTodoItemViewController.swift; sourceTree = "<group>"; };
 		E852EBDE197373E700DC53E7 /* TodoListTableTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoListTableTableViewController.swift; sourceTree = "<group>"; };
+		E852EBE019737B0A00DC53E7 /* TodoListTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TodoListTableViewController.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +84,7 @@
 				E852EBC11973570100DC53E7 /* ViewController.swift */,
 				E852EBC31973570100DC53E7 /* Main.storyboard */,
 				E852EBDE197373E700DC53E7 /* TodoListTableTableViewController.swift */,
+				E852EBE019737B0A00DC53E7 /* TodoListTableViewController.h */,
 				E852EBDC1973718800DC53E7 /* AddTodoItemViewController.swift */,
 				E852EBC61973570100DC53E7 /* Images.xcassets */,
 				E852EBBD1973570100DC53E7 /* Supporting Files */,
