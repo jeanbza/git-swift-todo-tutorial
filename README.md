@@ -327,11 +327,9 @@ override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath:
 1. Control-drag from the text field on your canvas to the code display in the editor on the right, stopping the drag at the line just below the ```class AddTodoItemViewController: UIViewController {``` line
 1. In the dialog that appears, for Name, type textField and leave the rest of the options as they are
 1. Click Connect
-1. This will hook up your button to your code and create a connection in the storyboard xml for you. In your code it should look like ```    @IBOutlet var textField: UITextField```
+1. This will hook up your button to your code and create a connection in the storyboard xml for you. In your code it should look like ```@IBOutlet var textField: UITextField```
 1. Do the same for the Done button, calling it 'doneButton'. In your code it should look like ```@IBOutlet var doneButton: UIBarButtonItem```
-1. Next, let's give our controller a todoItem that it will store our 'add' data into: ```
-var todoItem: TodoItem = TodoItem(itemName: "")
-```
+1. Next, let's give our controller a todoItem that it will store our 'add' data into: ```var todoItem: TodoItem = TodoItem(itemName: "")```
 1. Of course we also need to be able to take data from the user input and assign it to this variable: ```
 override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject) {
     if (self.textField.text.utf16count > 0) {
