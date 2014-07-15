@@ -216,7 +216,156 @@ func unwindToList(segue: UIStoryboardSegue) {
 
 1. Checkpoint: Hit the run button on the top left of xCode - when you navigate over to Add a todo, your cancel and done buttons should pop you back over to Todo list (your table view)
 
+##### Create a Data Class
+1. Choose File > New > File
+1. In the iOS section on the left select Source
+1. Select Cocoa Touch Class and click Next
+1. Type ToDoItem in the Class field
+1. In the Subclass dropdown select NSObject
+1. Make sure Language is set to Swift and select Next
+1. Click Create
+Your class should look like this
+```
+import UIKit
 
+class ToDoItem: NSObject {
+   
+}
+```
 
+##### Code a Data Class called TodoItem
+1. Give it a name and completed variable and initialize them like so:
+```
+import UIKit
 
+class TodoItem: NSObject {
+    var itemName:String = ""
+    var completed:Bool = false
 
+    init(itemName:String) {
+        self.itemName = itemName
+    }
+}
+```
+
+##### Give your table view controller an array of TodoItems
+1. Navigate to your TodoTableListViewController
+1. Give it an array of TodoItems:
+```
+var todoItems: [TodoItem] = []
+```
+1. Give it an loadInitialData function that populates your array:
+```
+func loadInitialData() {
+    todoItems = [
+        TodoItem(itemName: "Go to the dentist"),
+        TodoItem(itemName: "Fetch groceries"),
+        TodoItem(itemName: "Sleep")
+    ]
+}
+```
+1. Load your initial data from the viewDidLoad function:
+```
+override func viewDidLoad() {
+    super.viewDidLoad()
+    loadInitialData()
+}
+```
+1. Make the number of sections in your table one:
+```
+override func numberOfSectionsInTableView(tableView: UITableView!) -> Int {
+    return 1
+}
+```
+1. Next, let's create a function that returns the number of rows per section. Since we only have one section, we'll return a count of the todoItems. Add the following function:
+```
+override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return todoItems.count
+}
+```
+<this function looks retarded because: https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Functions.html#//apple_ref/doc/uid/TP40014097-CH10-XID_202 (go to External Parameter Names>
+1. The last function we need will genereate UITableViewCells for each row at a specific index
+```
+override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    var cell = tableView.dequeueReusableCellWithIdentifier("ListPrototypeCell") as UITableViewCell
+    var todoItem = todoItems[indexPath.row]
+    cell.textLabel.text = todoItem.itemName
+    
+    return cell
+}
+```
+1. In the project navigator select Main.storyboard
+1. In the Todo list TableView select the Prototype Table View Cell
+1. In the Utilities slider on the right, go to the Attributes Inspector (4th icon from the left)
+1. For the Identifier change the Reuse Identifier to ListPrototypeCell
+<note: don't copy paste - type slowly and click out of box to make sure storyboard updates>
+1. Checkpoint - Run the app, the Table View should populate with the initial data "Go to the dentist", "Fetch groceries", "Sleep"
+
+##### Mark item as complete
+1. In the project navigator select TodoListTableViewController.swift
+1. Create the override function tablView didSelectRowAtIndexPath
+```
+override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    tableView.deselectRowAtIndexPath(indexPath, animated: false)
+    
+    var tappedItem = todoItems[indexPath.row] as TodoItem
+    tappedItem.completed = !tappedItem.completed
+    
+    tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.None)
+
+}
+```
+1. Add code to tableView cellForRowAtIndexPath to display checkmark on completed items
+```
+override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    var cell = tableView.dequeueReusableCellWithIdentifier("ListPrototypeCell") as UITableViewCell
+    var todoItem = todoItems[indexPath.row]
+    cell.textLabel.text = todoItem.itemName
+    
+    if (todoItem.completed) {
+        cell.accessoryType = UITableViewCellAccessoryType.Checkmark;
+    } else {
+        cell.accessoryType = UITableViewCellAccessoryType.None;
+    }
+    
+    return cell
+}
+```
+1. Checkpoint - run the app, click an item and a check mark should appear next to it, click it again to make the checkmark disappear
+
+##### Lastly - add new items
+1. Head on over to your Storyboard
+1. In the outline view, select the AddTodoItemViewController object
+1. Click the Assistant button in the upper right of the window’s toolbar to open the assistant editor (the suit-looking icon)
+1. The editor on the right should appear with AddTodoItemViewController.swift displayed. If it isn’t displayed, click the filename in the editor on the right and choose AddTodoItemViewController.swift
+1. Select the text field in your storyboard
+1. Control-drag from the text field on your canvas to the code display in the editor on the right, stopping the drag at the line just below the ```class AddTodoItemViewController: UIViewController {``` line
+1. In the dialog that appears, for Name, type textField and leave the rest of the options as they are
+1. Click Connect
+1. This will hook up your button to your code and create a connection in the storyboard xml for you. In your code it should look like ```    @IBOutlet var textField: UITextField```
+1. Do the same for the Done button, calling it 'doneButton'. In your code it should look like ```@IBOutlet var doneButton: UIBarButtonItem```
+1. Next, let's give our controller a todoItem that it will store our 'add' data into:
+```
+var todoItem: TodoItem = TodoItem(itemName: "")
+```
+1. Of course we also need to be able to take data from the user input and assign it to this variable:
+```
+override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject) {
+    if (self.textField.text.utf16count > 0) {
+        self.todoItem = TodoItem(itemName: self.textField.text)
+    }
+}
+```
+1. Lastly, we need to head back over to TodoListTableTableViewController.swift and update our unwindToList to take the data that AddTodoItemViewController.swift is holding and pop it into the array of todoItems:
+```
+func unwindToList(segue: UIStoryboardSegue) {
+    var source = segue.sourceViewController as AddTodoItemViewController
+    var todoItem:TodoItem = source.todoItem
+    
+    if todoItem != nil {
+        self.todoItems += todoItem
+        self.tableView.reloadData()
+    }
+}
+```
+1. Checkpoint: Run your app - you should be able to add items!
