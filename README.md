@@ -14,21 +14,6 @@ git-swift-todo-tutorial
 
 <insert blurb about the xcode landing screen>
 
-<skippable?>
-  ##### Add a label to your storyboard
-  1. In the Project Navigator on the far left of xCode, select Main.storyboard
-  <you should see one view controller>
-  <trim next line to just 'open object library?'>
-  1. Find the Object Library at the bottom of the Utilities panel which is on the far right of xCode (To open the library with a menu command, choose View > Utilities > Show Object Library)
-  <if you don't see the utilities panel, click the Utilities button at the top right)
-  1. At the bottom is a search panel. Find or search for 'Label' and drag one into the center of your View using the guides to center it
-  1. Double click the label to edit the text
-  1. Type 'Hello World'
-  1. Checkpoint: Hit the run button on the top left of xCode - you should see a blank white screen with 'Hello World' in the center
-
-  ##### Remove label
-</skippable?>
-
 ##### Add a textfield to your storyboard
 1. In the Project Navigator on the far left of xCode, select Main.storyboard
 <you should see one view controller>
