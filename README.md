@@ -152,11 +152,12 @@ Now that you’ve created a custom view controller subclass, you need to tell yo
 WHAT YOU SHOULD BE ABLE TO DO
 1. Navigate to your TodoListTableTableViewController.swift
 1. Add the following function:
-```
-@IBAction func unwindToList(segue: UIStoryboardSegue) {
-    println("Unwinding")
-}
-```
+  ```
+  @IBAction func unwindToList(segue: UIStoryboardSegue) {
+      println("Unwinding")
+  }
+
+  ```
 <blurb>This registers the action and allows it to be used in storyboard</blurb>
 1. Navigate to your storyboard
 1. On the canvas, Control-drag from the 'Cancel' button to the Exit item right above (the right item of the three squares above <reword>)
@@ -168,26 +169,27 @@ WHAT YOU HAVE TO DO BECAUSE XCODE 6 IS BROKEN
 1. On the left of the dialog that appears, select the Header File under iOS
 1. Save as 'TodoListTableViewController'
 1. Add the following to TodoListTableViewController.h:
-```
-@interface TodoListTableViewController
-
--(IBAction) unwindToList:(UIStoryboardSegue *) segue;
-
-@end
-```
+  ```
+  @interface TodoListTableViewController
+  
+  -(IBAction) unwindToList:(UIStoryboardSegue *) segue;
+  
+  @end
+  ```
 <blurb>This registers the action and allows it to be used in storyboard</blurb>
 1. Navigate to TodoListTableViewController.swift
 1. Change the class definition to:
-```
-@objc(TodoListTableViewController) class TodoListTableViewController: UITableViewController {
-```
+  ```
+  @objc(TodoListTableViewController) class TodoListTableViewController: UITableViewController {
+  
+  ```
 <blurb>This effectively makes it a C# class, which sucks, but there you go <reword></blurb>
 1. Add the Unwind function:
-```
-func unwindToList(segue: UIStoryboardSegue) {
-
-}
-```
+  ```
+  func unwindToList(segue: UIStoryboardSegue) {
+  
+  }
+  ```
 1. Re-register TodoListTableViewController, since we mucked about with it
   1. Go to your storyboard
   1. Click your table view controller
@@ -197,7 +199,7 @@ func unwindToList(segue: UIStoryboardSegue) {
 1. Choose unwindToList: from the shortcut menu
 1. Do the same for the 'Done' button
 
-
+===============
 
 1. Checkpoint: Hit the run button on the top left of xCode - when you navigate over to Add a todo, your cancel and done buttons should pop you back over to Todo list (your table view)
 
@@ -220,65 +222,70 @@ class ToDoItem: NSObject {
 
 ##### Code a Data Class called TodoItem
 1. Give it a name and completed variable and initialize them like so:
-```
-import UIKit
-
-class TodoItem: NSObject {
-    var itemName:String = ""
-    var completed:Bool = false
-
-    init(itemName:String) {
-        self.itemName = itemName
-    }
-}
-```
+  ```
+  import UIKit
+  
+  class TodoItem: NSObject {
+      var itemName:String = ""
+      var completed:Bool = false
+  
+      init(itemName:String) {
+          self.itemName = itemName
+      }
+  }
+  ```
 
 ##### Give your table view controller an array of TodoItems
 1. Navigate to your TodoTableListViewController
 1. Give it an array of TodoItems:
-```
-var todoItems: [TodoItem] = []
-```
+  ```
+  var todoItems: [TodoItem] = []
+  
+  ```
 1. Give it an loadInitialData function that populates your array:
-```
-func loadInitialData() {
-    todoItems = [
-        TodoItem(itemName: "Go to the dentist"),
-        TodoItem(itemName: "Fetch groceries"),
-        TodoItem(itemName: "Sleep")
-    ]
-}
-```
+  ```
+  func loadInitialData() {
+      todoItems = [
+          TodoItem(itemName: "Go to the dentist"),
+          TodoItem(itemName: "Fetch groceries"),
+          TodoItem(itemName: "Sleep")
+      ]
+  }
+  
+  ```
 1. Load your initial data from the viewDidLoad function:
-```
-override func viewDidLoad() {
-    super.viewDidLoad()
-    loadInitialData()
-}
-```
+  ```
+  override func viewDidLoad() {
+      super.viewDidLoad()
+      loadInitialData()
+  }
+  
+  ```
 1. Make the number of sections in your table one:
-```
-override func numberOfSectionsInTableView(tableView: UITableView!) -> Int {
-    return 1
-}
-```
+  ```
+  override func numberOfSectionsInTableView(tableView: UITableView!) -> Int {
+      return 1
+  }
+  
+  ```
 1. Next, let's create a function that returns the number of rows per section. Since we only have one section, we'll return a count of the todoItems. Add the following function:
-```
-override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return todoItems.count
-}
-```
+  ```
+  override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+      return todoItems.count
+  }
+  
+  ```
 <this function looks retarded because: https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Functions.html#//apple_ref/doc/uid/TP40014097-CH10-XID_202 (go to External Parameter Names>
 1. The last function we need will genereate UITableViewCells for each row at a specific index
-```
-override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    var cell = tableView.dequeueReusableCellWithIdentifier("ListPrototypeCell") as UITableViewCell
-    var todoItem = todoItems[indexPath.row]
-    cell.textLabel.text = todoItem.itemName
-    
-    return cell
-}
-```
+  ```
+  override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+      var cell = tableView.dequeueReusableCellWithIdentifier("ListPrototypeCell") as UITableViewCell
+      var todoItem = todoItems[indexPath.row]
+      cell.textLabel.text = todoItem.itemName
+      
+      return cell
+  }
+  ```
 1. In the project navigator select Main.storyboard
 1. In the Todo list TableView select the Prototype Table View Cell
 1. In the Utilities slider on the right, go to the Attributes Inspector (4th icon from the left)
@@ -289,33 +296,33 @@ override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath:
 ##### Mark item as complete
 1. In the project navigator select TodoListTableViewController.swift
 1. Create the override function tablView didSelectRowAtIndexPath
-```
-override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-    tableView.deselectRowAtIndexPath(indexPath, animated: false)
-    
-    var tappedItem = todoItems[indexPath.row] as TodoItem
-    tappedItem.completed = !tappedItem.completed
-    
-    tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.None)
-
-}
-```
+  ```
+  override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+      tableView.deselectRowAtIndexPath(indexPath, animated: false)
+      
+      var tappedItem = todoItems[indexPath.row] as TodoItem
+      tappedItem.completed = !tappedItem.completed
+      
+      tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.None)
+  
+  }
+  ```
 1. Add code to tableView cellForRowAtIndexPath to display checkmark on completed items
-```
-override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    var cell = tableView.dequeueReusableCellWithIdentifier("ListPrototypeCell") as UITableViewCell
-    var todoItem = todoItems[indexPath.row]
-    cell.textLabel.text = todoItem.itemName
-    
-    if (todoItem.completed) {
-        cell.accessoryType = UITableViewCellAccessoryType.Checkmark;
-    } else {
-        cell.accessoryType = UITableViewCellAccessoryType.None;
-    }
-    
-    return cell
-}
-```
+  ```
+  override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+      var cell = tableView.dequeueReusableCellWithIdentifier("ListPrototypeCell") as UITableViewCell
+      var todoItem = todoItems[indexPath.row]
+      cell.textLabel.text = todoItem.itemName
+      
+      if (todoItem.completed) {
+          cell.accessoryType = UITableViewCellAccessoryType.Checkmark;
+      } else {
+          cell.accessoryType = UITableViewCellAccessoryType.None;
+      }
+      
+      return cell
+  }
+  ```
 1. Checkpoint - run the app, click an item and a check mark should appear next to it, click it again to make the checkmark disappear
 
 ##### Lastly - add new items
