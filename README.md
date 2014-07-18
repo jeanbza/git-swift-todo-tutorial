@@ -1,6 +1,10 @@
 git-swift-todo-tutorial
 =======================
 
+## Foreword
+
+1. We are obligated by an NDA *not to post any screenshots*. Sorry! We'll add them when the NDA lifts.
+1. Much of xCode 6 is in flux - we are developing for *xCode 6 Beta 3*. We will update as we go and update that message.
 
 ## The Basics
 
