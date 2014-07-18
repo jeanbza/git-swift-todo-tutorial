@@ -16,13 +16,9 @@ git-swift-todo-tutorial
 1. Choose 'iPhone 4s' from the selection of devices at the top left of xCode
 1. Checkpoint: Hit the run button on the top left of xCode - you should see a blank white screen
 
-<insert blurb about the xcode landing screen>
-
 ##### Add a textfield to your storyboard
 1. In the Project Navigator on the far left of xCode, select Main.storyboard
-<you should see one view controller>
-1. Find the Object Library at the bottom of the Utilities panel (which is on the far right of xCode)
-<if you don't see the utilities panel, click the Utilities button at the top right)
+1. Find the Object Library at the bottom of the Utilities panel (which is on the far right of xCode). If you don't see the utilities panel, click the Utilities button at the top right
 1. At the bottom is a search panel. Find or search for 'Text Field'
 1. Drag one to the furthest left guider on your View, about 1/3 from the top of your view
 1. Increase the width of the text field by dragging the right side of the text view to the rightmost guider
@@ -33,22 +29,22 @@ git-swift-todo-tutorial
 
 ## The storyboard
 
-<insert blurb about rotating the screen and width not changing>
-
 ##### Position text field using Auto Layout
+When you run your code, you can change orientation by going to 'Hardware' and clicking one of the rotate buttons. Note that when you do so, your text field doesn't adjust its size automatically. Let's address that.
+
 1. In the Project Navigator on the far left of xCode, select Main.storyboard
 1. Click on the Text Field in the View
 1. Set top space on the top
   1. Control+Click and Drag from the Text Field to the area right above, which should highlight blue and say 'View'
-  1. Release your drag <reword>
+  1. Release your drag
   1. Select 'Top Space to Top Layout Guide' from the small black menu
 1. Set leading space on the left
   1. Control+Click and Drag from the Text Field to the area left of the view, which should highlight blue and say 'View'
-  1. Release your drag <reword>
+  1. Release your drag
   1. Select 'Leading Space to Container' from the small black menu
 1. Set Trailing space on the right
   1. Control+Click and Drag from the Text Field to the area right of the view, which should highlight blue and say 'View'
-  1. Release your drag <reword>
+  1. Release your drag
   1. Select 'Trailing Space to Container' from the small black menu
 1. Checkpoint: Hit the run button on the top left of xCode
   1. You should see the Text Field with equal spacing on each side and spacing from the top bar
@@ -57,8 +53,7 @@ git-swift-todo-tutorial
 
 ##### Create a table view controller
 1. In the Project Navigator on the far left of xCode, select Main.storyboard
-1. Drag a table view controller and drop it into the canvas
-<if you don't have enough space zoom out>
+1. Drag a table view controller and drop it into the canvas. If you're lacking in space, right click on the canvas to zoom out
 <make sure you're zoomed in to 100%>
 <view or view controller>
 1. Click the arrow on the left of your view controller
