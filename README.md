@@ -77,15 +77,6 @@ When you run your code, you can change orientation by going to 'Hardware' and cl
 1. Click 'present modally' from the small menu that appears
 1. Checkpoint: Hit the run button on the top left of xCode - Click the Add button and the New Todo view should appear, but there is no way to get back
 
-<insert blurb about navigation etc>
-
-<ignore and resolve later>
-  ###### Update layout constraints
-  You may have noticed some warnings about ambiguous layout sizing. Let's resolve those now.
-
-  1. 
-</ignore>
-
 ##### Add a navigation controller to the view controller
 1. Select your view controller
 <not to be confused with the table list view controller>
@@ -145,25 +136,22 @@ Now that you’ve created a custom view controller subclass, you need to tell yo
 
 ##### Connecting cancel and done buttons to exit segue <reword?>
 
-<REFERENCE: http://stackoverflow.com/questions/24029586/xcode-6-storyboard-unwind-segue-with-swift-not-connecting-to-exit>
-<we are going off track here and converting to c class since xcode 6 is pre-alpha mode and full of fun times>
-
 WHAT YOU SHOULD BE ABLE TO DO
 1. Navigate to your TodoListTableTableViewController.swift
-1. Add the following function:
+1. Add the following function (this registers the action and allows it to be used in storyboard):
   ```
   @IBAction func unwindToList(segue: UIStoryboardSegue) {
       println("Unwinding")
   }
 
   ```
-<blurb>This registers the action and allows it to be used in storyboard</blurb>
 1. Navigate to your storyboard
 1. On the canvas, Control-drag from the 'Cancel' button to the Exit item right above (the right item of the three squares above <reword>)
 1. Choose unwindToList: from the shortcut menu
 1. Do the same for the 'Done' button
 
 WHAT YOU HAVE TO DO BECAUSE XCODE 6 IS BROKEN
+(Note: see http://stackoverflow.com/questions/24029586/xcode-6-storyboard-unwind-segue-with-swift-not-connecting-to-exit for more details on this bug)
 1. Choose File > New > File (or press Command-N)
 1. On the left of the dialog that appears, select the Header File under iOS
 1. Save as 'TodoListTableViewController'
