@@ -151,8 +151,7 @@ WHAT YOU SHOULD BE ABLE TO DO
 1. Do the same for the 'Done' button
 
 WHAT YOU HAVE TO DO BECAUSE XCODE 6 IS BROKEN
-
-(Note: see http://stackoverflow.com/questions/24029586/xcode-6-storyboard-unwind-segue-with-swift-not-connecting-to-exit for more details on this bug)
+(Note: see this [stack overflow question][1] for more details on this bug)
 
 1. Choose File > New > File (or press Command-N)
 1. On the left of the dialog that appears, select the Header File under iOS
@@ -348,3 +347,5 @@ class ToDoItem: NSObject {
   }
   ```
 1. Checkpoint: Run your app - you should be able to add items!
+
+  [1]: http://stackoverflow.com/questions/24029586/xcode-6-storyboard-unwind-segue-with-swift-not-connecting-to-exit
