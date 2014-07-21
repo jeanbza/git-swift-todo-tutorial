@@ -151,6 +151,7 @@ WHAT YOU SHOULD BE ABLE TO DO
 1. Do the same for the 'Done' button
 
 WHAT YOU HAVE TO DO BECAUSE XCODE 6 IS BROKEN
+
 (Note: see this [stack overflow question][1] for more details on this bug)
 
 1. Choose File > New > File (or press Command-N)
