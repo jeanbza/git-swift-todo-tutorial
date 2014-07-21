@@ -1,8 +1,6 @@
 git-swift-todo-tutorial
 =======================
 
-**Table of Contents**  *generated with [DocToc](http://doctoc.herokuapp.com/)*
-
 - [Foreword](#user-content-foreword)
 - [Installing This App](#user-content-installing-this-app)
 - [Feedback](#user-content-feedback)
