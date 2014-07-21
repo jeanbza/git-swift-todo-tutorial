@@ -150,6 +150,7 @@ Now that you’ve created a custom view controller subclass, you need to tell yo
 1. On the canvas, Control-drag from the 'Cancel' button to the Exit item right above (the right item of the three squares above <reword>)
 1. Choose unwindToList: from the shortcut menu
 1. Do the same for the 'Done' button
+1. Checkpoint: Hit the run button on the top left of xCode - when you navigate over to Add a todo, your cancel and done buttons should pop you back over to Todo list (your table view)
 
 *WHAT YOU HAVE TO DO BECAUSE XCODE 6 IS BROKEN*
 
@@ -188,9 +189,6 @@ Now that you’ve created a custom view controller subclass, you need to tell yo
 1. On the canvas, Control-drag from the 'Cancel' button to the Exit item right above (the right item of the three squares above <reword>)
 1. Choose unwindToList: from the shortcut menu
 1. Do the same for the 'Done' button
-
-===============
-
 1. Checkpoint: Hit the run button on the top left of xCode - when you navigate over to Add a todo, your cancel and done buttons should pop you back over to Todo list (your table view)
 
 ##### Create a Data Class
