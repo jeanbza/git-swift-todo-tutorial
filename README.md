@@ -5,6 +5,14 @@ git-swift-todo-tutorial
 
 1. We are obligated by an NDA *not to post any screenshots*. Sorry! We'll add them when the NDA lifts.
 1. Much of xCode 6 is in flux - we are developing for *xCode 6 Beta 3*. We will update as we go and update that message.
+1. Checkout the Todo folder for the completed code
+
+## Installing This App
+
+1. `cd /your/preferred/xcode/location`
+1. `git clone https://github.com/jadekler/git-swift-todo-tutorial.git`
+1. Open xcode
+1. File > Open > /your/preferred/xcode/location/git-swift-todo-tutorial/Todo
 
 ## Feedback
 
