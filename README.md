@@ -6,6 +6,10 @@ git-swift-todo-tutorial
 1. We are obligated by an NDA *not to post any screenshots*. Sorry! We'll add them when the NDA lifts.
 1. Much of xCode 6 is in flux - we are developing for *xCode 6 Beta 3*. We will update as we go and update that message.
 
+## Feedback
+
+Please, provide feedback on anything you feel is lacking or could be better worded! Pull requests, github issues, or direct emails to jadekler@gmail.com are all welcome!
+
 ## The Basics
 
 ##### Create your project
@@ -347,5 +351,8 @@ class ToDoItem: NSObject {
   }
   ```
 1. Checkpoint: Run your app - you should be able to add items!
+
+## That's it!
+As mentioned before, we love feedback - please open issues about anything you feel is missing, or email the authors directly about questions or feedback at jadekler@gmail.com.
 
   [1]: http://stackoverflow.com/questions/24029586/xcode-6-storyboard-unwind-segue-with-swift-not-connecting-to-exit
