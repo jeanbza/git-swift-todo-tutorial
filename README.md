@@ -8,7 +8,7 @@ git-swift-todo-tutorial
 - [Feedback](#user-content-feedback)
 - [Getting Start: The Basics](#user-content-getting-start-the-basics)
   - [Create your project](#user-content-create-your-project)
-	- [Add a textfield to your storyboard](#user-content-add-a-textfield-to-your-storyboard)
+  - [Add a textfield to your storyboard](#user-content-add-a-textfield-to-your-storyboard)
 - [Getting Our Views Together: The storyboard](#user-content-getting-our-views-together-the-storyboard)
 	- [Position text field using Auto Layout](#user-content-position-text-field-using-auto-layout)
 	- [Create a table view controller](#user-content-create-a-table-view-controller)
