@@ -136,7 +136,7 @@ Now that you’ve created a custom view controller subclass, you need to tell yo
 
 ##### Connecting cancel and done buttons to exit segue <reword?>
 
-WHAT YOU SHOULD BE ABLE TO DO
+###### WHAT YOU SHOULD BE ABLE TO DO
 1. Navigate to your TodoListTableTableViewController.swift
 1. Add the following function (this registers the action and allows it to be used in storyboard):
   ```
@@ -150,8 +150,7 @@ WHAT YOU SHOULD BE ABLE TO DO
 1. Choose unwindToList: from the shortcut menu
 1. Do the same for the 'Done' button
 
-WHAT YOU HAVE TO DO BECAUSE XCODE 6 IS BROKEN
-
+###### WHAT YOU HAVE TO DO BECAUSE XCODE 6 IS BROKEN
 (Note: see this [stack overflow question][1] for more details on this bug)
 
 1. Choose File > New > File (or press Command-N)
