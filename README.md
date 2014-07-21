@@ -10,7 +10,7 @@ git-swift-todo-tutorial
 
 Please, provide feedback on anything you feel is lacking or could be better worded! Pull requests, github issues, or direct emails to jadekler@gmail.com are all welcome!
 
-## The Basics
+## Getting Start: The Basics
 
 ##### Create your project
 1. Open xCode
@@ -31,7 +31,7 @@ Please, provide feedback on anything you feel is lacking or could be better word
   1. Enter 'new todo' next to 'Placeholder'
 1. Checkpoint: Hit the run button on the top left of xCode - you should see a blank white screen with a text field that says 'New Todo' (don't worry if the text field goes off of the screen)
 
-## The storyboard
+## Getting Our Views Together: The storyboard
 
 ##### Position text field using Auto Layout
 When you run your code, you can change orientation by going to 'Hardware' and clicking one of the rotate buttons. Note that when you do so, your text field doesn't adjust its size automatically. Let's address that.
@@ -97,7 +97,7 @@ When you run your code, you can change orientation by going to 'Hardware' and cl
   1. In the Attributes inspector, find the Identifier option in the Bar Button Item section. Choose 'Cancel' from the Identifier pop-up menu
 1. Checkpoint: Hit the run button on the top left of xCode - you should see your newly created 'Done' and 'Cancel' buttons when you navigate to 'Add a todo', but they won't do anything just yet
 
-## The swift
+## Getting Our Hands Dirty: The swift
 
 ##### Create a custom view controller that is a subclass of UIViewController
 1. Choose File > New > File (or press Command-N)
