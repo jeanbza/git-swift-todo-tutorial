@@ -9,18 +9,18 @@
 import UIKit
 
 class AddTodoItemViewController: UIViewController {
-
+    
     var todoItem: TodoItem = TodoItem(itemName: "")
     
-    @IBOutlet var doneButton: UIBarButtonItem
-    @IBOutlet var textField: UITextField
+    @IBOutlet var doneButton: UIBarButtonItem!
+    @IBOutlet var textField: UITextField!
     
     init(coder aDecoder: NSCoder!) {
         super.init(coder: aDecoder)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject) {
-        if (self.textField.text.utf16count > 0) {
+        if (self.textField.text.utf16Count > 0) {
             self.todoItem = TodoItem(itemName: self.textField.text)
         }
     }
@@ -28,7 +28,7 @@ class AddTodoItemViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
