@@ -12,15 +12,15 @@ class AddTodoItemViewController: UIViewController {
 
     var todoItem: TodoItem = TodoItem(itemName: "")
     
-    @IBOutlet var doneButton: UIBarButtonItem
-    @IBOutlet var textField: UITextField
+    @IBOutlet var doneButton: UIBarButtonItem!
+    @IBOutlet var textField: UITextField!
     
-    init(coder aDecoder: NSCoder!) {
+    required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject) {
-        if (self.textField.text.utf16count > 0) {
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if (countElements(self.textField.text) > 0) {
             self.todoItem = TodoItem(itemName: self.textField.text)
         }
     }

@@ -12,7 +12,7 @@ import UIKit
 
     var todoItems: [TodoItem] = []
     
-    init(coder aDecoder: NSCoder!) {
+    required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
@@ -28,8 +28,8 @@ import UIKit
         var source = segue.sourceViewController as AddTodoItemViewController
         var todoItem:TodoItem = source.todoItem
         
-        if todoItem != nil {
-            self.todoItems += todoItem
+        if todoItem.itemName != "" {
+            self.todoItems.append(todoItem)
             self.tableView.reloadData()
         }
     }
@@ -45,17 +45,20 @@ import UIKit
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("ListPrototypeCell") as UITableViewCell
+        var tempCell = tableView.dequeueReusableCellWithIdentifier("ListPrototypeCell") as UITableViewCell
         var todoItem = todoItems[indexPath.row]
-        cell.textLabel.text = todoItem.itemName
+        
+        // Downcast from UILabel? to UILabel
+        let cell = tempCell.textLabel as UILabel!
+        cell.text = todoItem.itemName
         
         if (todoItem.completed) {
-            cell.accessoryType = UITableViewCellAccessoryType.Checkmark;
+            tempCell.accessoryType = UITableViewCellAccessoryType.Checkmark;
         } else {
-            cell.accessoryType = UITableViewCellAccessoryType.None;
+            tempCell.accessoryType = UITableViewCellAccessoryType.None;
         }
         
-        return cell
+        return tempCell
     }
     
     override func viewDidLoad() {
@@ -73,9 +76,5 @@ import UIKit
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return todoItems.count
-    }
-
-    override func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
-        return 0
     }
 }
