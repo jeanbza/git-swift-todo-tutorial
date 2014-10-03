@@ -5,9 +5,23 @@
 
 import UIKit
 
-@objc(TodoListTableViewController) class TodoListTableViewController: UITableViewController {
+class TodoListTableViewController: UITableViewController {
 
     var todoItems: [TodoItem] = []
+    
+    @IBAction func unwindAndAddToList(segue: UIStoryboardSegue) {
+        var source = segue.sourceViewController as AddTodoItemViewController
+        var todoItem:TodoItem = source.todoItem
+            
+        if todoItem.itemName != "" {
+            self.todoItems.append(todoItem)
+            self.tableView.reloadData()
+        }
+    }
+    
+    @IBAction func unwindToList(segue: UIStoryboardSegue) {
+        
+    }
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -19,16 +33,6 @@ import UIKit
             TodoItem(itemName: "Fetch groceries"),
             TodoItem(itemName: "Sleep")
         ]
-    }
-    
-    func unwindToList(segue: UIStoryboardSegue) {
-        var source = segue.sourceViewController as AddTodoItemViewController
-        var todoItem:TodoItem = source.todoItem
-        
-        if todoItem.itemName != "" {
-            self.todoItems.append(todoItem)
-            self.tableView.reloadData()
-        }
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

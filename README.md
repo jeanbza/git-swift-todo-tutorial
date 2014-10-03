@@ -160,19 +160,14 @@ Now that you’ve created a custom view controller subclass, you need to tell yo
 1. Choose UITableViewController in the “Subclass of” pop-up menu
 1. Make sure the “Also create XIB file” option is unselected
 1. Click Next
-1. The save location will default to your project directory. Leave that as is
-1. The Group option will default to your app name, ToDoList. Leave that as is
+1. Click Next, and Create
 1. The Targets section will default to having your app selected and the tests for your app unselected. That’s perfect, so leave that as is
-1. Click Create
 1. In the project navigator, select Main.storyboard
 1. Select your **Table** View Controller (in the Outline View, this is 'Table View Controller' under the 'Todo list Scene')
-1. With the table view controller selected, open the Identity inspector in the utility area.
 1. In the Identity inspector, open the pop-up menu next to the Class option
 1. Choose ToDoListTableViewController
 
-##### Connecting cancel and done buttons to exit segue <reword?>
-
-*WHAT YOU SHOULD BE ABLE TO DO*
+##### Connecting cancel and done buttons to exit segue
 
 1. Navigate to your TodoListTableTableViewController.swift
 1. Add the following function (this registers the action and allows it to be used in storyboard):
@@ -183,45 +178,6 @@ Now that you’ve created a custom view controller subclass, you need to tell yo
 
   ```
 1. Navigate to your storyboard
-1. On the canvas, Control-drag from the 'Cancel' button to the Exit item right above (the right item of the three squares above <reword>)
-1. Choose unwindToList: from the shortcut menu
-1. Do the same for the 'Done' button
-1. Checkpoint: Hit the run button on the top left of xCode - when you navigate over to Add a todo, your cancel and done buttons should pop you back over to Todo list (your table view)
-
-*WHAT YOU HAVE TO DO BECAUSE XCODE 6 IS BROKEN*
-
-(Note: see this [stack overflow question][1] for more details on this bug)
-
-1. Choose File > New > File (or press Command-N)
-1. On the left of the dialog that appears, select the Header File under iOS
-1. Save as 'TodoListTableViewController'
-1. Add the following to TodoListTableViewController.h:
-  ```
-  @interface TodoListTableViewController
-  
-  -(IBAction) unwindToList:(UIStoryboardSegue *) segue;
-  
-  @end
-  ```
-<blurb>This registers the action and allows it to be used in storyboard</blurb>
-1. Navigate to TodoListTableViewController.swift
-1. Change the class definition to:
-  ```
-  @objc(TodoListTableViewController) class TodoListTableViewController: UITableViewController {
-  
-  ```
-<blurb>This effectively makes it a C# class, which sucks, but there you go <reword></blurb>
-1. Add the Unwind function:
-  ```
-  func unwindToList(segue: UIStoryboardSegue) {
-  
-  }
-  ```
-1. Re-register TodoListTableViewController, since we mucked about with it
-  1. Go to your storyboard
-  1. Click your table view controller
-  1. Go to the Identity Inspector
-  1. Pull down the dropdown and re-select TodoListTableViewController
 1. On the canvas, Control-drag from the 'Cancel' button to the Exit item right above (the right item of the three squares above <reword>)
 1. Choose unwindToList: from the shortcut menu
 1. Do the same for the 'Done' button
