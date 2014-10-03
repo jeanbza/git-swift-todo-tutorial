@@ -7,7 +7,7 @@
         <!--Todo list-->
         <scene sceneID="eAs-cw-MNT">
             <objects>
-                <tableViewController id="VPH-b4-6oJ" customClass="TodoListTableViewController" sceneMemberID="viewController">
+                <tableViewController id="VPH-b4-6oJ" customClass="TodoListTableViewController" customModule="Todo" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="SAH-Qf-3xI">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -65,12 +65,12 @@
                     <navigationItem key="navigationItem" title="Add a todo" id="0aA-oX-rKJ">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="QZp-Bk-Hu7">
                             <connections>
-                                <segue destination="BXi-z8-yOe" kind="unwind" unwindAction="unwindToList:" id="YKL-3b-Unj"/>
+                                <segue destination="BXi-z8-yOe" kind="unwind" unwindAction="unwindToList:" id="xiV-yI-S9j"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="DMI-Sx-IuI">
                             <connections>
-                                <segue destination="BXi-z8-yOe" kind="unwind" unwindAction="unwindToList:" id="kl8-Dt-3QB"/>
+                                <segue destination="BXi-z8-yOe" kind="unwind" unwindAction="unwindAndAddToList:" id="uIw-3T-MXN"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
