@@ -1,4 +1,9 @@
-git-swift-todo-tutorial
+# Swift TODO App Tutorial
+
+Code version: xCode 6.0, Swift 1.0
+
+README version: xCode 6 Beta 5, Swift pre-release
+
 =======================
 
 - [Foreword](#user-content-foreword)
