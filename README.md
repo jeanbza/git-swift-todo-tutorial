@@ -165,7 +165,7 @@ Now that you’ve created a custom view controller subclass, you need to tell yo
 
 1. Navigate to your TodoListTableTableViewController.swift
 1. Add the following function (this registers the action and allows it to be used in storyboard):
-  ```
+  ```swift
   @IBAction func unwindToList(segue: UIStoryboardSegue) {
       println("Unwinding")
   }
@@ -183,17 +183,17 @@ Now that you’ve created a custom view controller subclass, you need to tell yo
 1. Fill in as follows ![](/img/img_9.png)
 1. Click Next, and Create
 Your class should look like this
-```
-import UIKit
+  ```swift
+  import UIKit
 
-class ToDoItem: NSObject {
-   
-}
-```
+  class ToDoItem: NSObject {
+     
+  }
+  ```
 
 ##### Fill in your TodoItem class
 1. Give it a name and completed variable and initialize them like so:
-  ```
+  ```swift
   import UIKit
   
   class TodoItem: NSObject {
@@ -215,7 +215,7 @@ class ToDoItem: NSObject {
   
   ```
 1. Give it a loadInitialData function that populates your array with some basic things:
-  ```
+  ```swift
   func loadInitialData() {
       todoItems = [
           TodoItem(itemName: "Go to the dentist"),
@@ -226,7 +226,7 @@ class ToDoItem: NSObject {
   
   ```
 1. Load your initial data from the viewDidLoad function:
-  ```
+  ```swift
   override func viewDidLoad() {
       super.viewDidLoad()
       loadInitialData()
@@ -234,14 +234,14 @@ class ToDoItem: NSObject {
   
   ```
 1. Make the number of sections in your table one:
-  ```
+  ```swift
   override func numberOfSectionsInTableView(tableView: UITableView!) -> Int {
       return 1
   }
   
   ```
 1. Next, let's create a function that returns the number of rows per section. Since we only have one section, we'll return a count of the todoItems. Add the following function:
-  ```
+  ```swift
   override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
       return todoItems.count
   }
@@ -249,7 +249,7 @@ class ToDoItem: NSObject {
   ```
 <this function looks retarded because: https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Functions.html#//apple_ref/doc/uid/TP40014097-CH10-XID_202 (go to External Parameter Names>
 1. The last function we need will generate UITableViewCells for each row at a specific index
-  ```
+  ```swift
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
       let tempCell = tableView.dequeueReusableCellWithIdentifier("ListPrototypeCell") as UITableViewCell
       let todoItem = todoItems[indexPath.row]
@@ -271,7 +271,7 @@ class ToDoItem: NSObject {
 ##### Mark item as complete
 1. In the project navigator select TodoListTableViewController.swift
 1. Add a tableView on select function to mark todoItems as complete
-  ```
+  ```swift
   override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     tableView.deselectRowAtIndexPath(indexPath, animated: false)
     
@@ -283,7 +283,7 @@ class ToDoItem: NSObject {
   ```
 1. Modify the tableView cell display function to have a checkmark if the item is finished
   
-  ```
+  ```swift
   if (todoItem.completed) {
       tempCell.accessoryType = UITableViewCellAccessoryType.Checkmark;
   } else {
@@ -291,7 +291,7 @@ class ToDoItem: NSObject {
   }
   ```
 1. The final version:
-  ```
+  ```swift
   override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let tempCell = tableView.dequeueReusableCellWithIdentifier("ListPrototypeCell") as UITableViewCell
     let todoItem = todoItems[indexPath.row]
@@ -324,7 +324,7 @@ class ToDoItem: NSObject {
 1. Next, let's give our controller a todoItem that it will store our 'add' data into: ```var todoItem: TodoItem = TodoItem(itemName: "")```
 1. Of course we also need to be able to take data from the user input and assign it to this variable:
 
-  ``` 
+  ```swift
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
     if (countElements(self.textField.text) > 0) {
         self.todoItem = TodoItem(itemName: self.textField.text)
@@ -332,7 +332,7 @@ class ToDoItem: NSObject {
   }  
   ```
 1. Now, we need to head back over to TodoListTableTableViewController.swift and add an unwind that takes the data that AddTodoItemViewController.swift is holding and pops into the array of todoItems: 
-  ```
+  ```swift
   @IBAction func unwindAndAddToList(segue: UIStoryboardSegue) {
     let source = segue.sourceViewController as AddTodoItemViewController
     let todoItem:TodoItem = source.todoItem
