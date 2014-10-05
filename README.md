@@ -197,12 +197,13 @@ class ToDoItem: NSObject {
   import UIKit
   
   class TodoItem: NSObject {
-      var itemName:String = ""
-      var completed:Bool = false
-  
-      init(itemName:String) {
-          self.itemName = itemName
-      }
+    let itemName: String
+    var completed: Bool
+    
+    init(itemName: String, completed: Bool = false) {
+        self.itemName = itemName
+        self.completed = completed
+    }
   }
   ```
 
@@ -250,8 +251,8 @@ class ToDoItem: NSObject {
 1. The last function we need will generate UITableViewCells for each row at a specific index
   ```
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-      var tempCell = tableView.dequeueReusableCellWithIdentifier("ListPrototypeCell") as UITableViewCell
-      var todoItem = todoItems[indexPath.row]
+      let tempCell = tableView.dequeueReusableCellWithIdentifier("ListPrototypeCell") as UITableViewCell
+      let todoItem = todoItems[indexPath.row]
       
       // Downcast from UILabel? to UILabel
       let cell = tempCell.textLabel as UILabel!
@@ -274,7 +275,7 @@ class ToDoItem: NSObject {
   override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     tableView.deselectRowAtIndexPath(indexPath, animated: false)
     
-    var tappedItem = todoItems[indexPath.row] as TodoItem
+    let tappedItem = todoItems[indexPath.row] as TodoItem
     tappedItem.completed = !tappedItem.completed
     
     tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.None)
@@ -292,8 +293,8 @@ class ToDoItem: NSObject {
 1. The final version:
   ```
   override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    var tempCell = tableView.dequeueReusableCellWithIdentifier("ListPrototypeCell") as UITableViewCell
-    var todoItem = todoItems[indexPath.row]
+    let tempCell = tableView.dequeueReusableCellWithIdentifier("ListPrototypeCell") as UITableViewCell
+    let todoItem = todoItems[indexPath.row]
     
     // Downcast from UILabel? to UILabel
     let cell = tempCell.textLabel as UILabel!
@@ -333,8 +334,8 @@ class ToDoItem: NSObject {
 1. Now, we need to head back over to TodoListTableTableViewController.swift and add an unwind that takes the data that AddTodoItemViewController.swift is holding and pops into the array of todoItems: 
   ```
   @IBAction func unwindAndAddToList(segue: UIStoryboardSegue) {
-    var source = segue.sourceViewController as AddTodoItemViewController
-    var todoItem:TodoItem = source.todoItem
+    let source = segue.sourceViewController as AddTodoItemViewController
+    let todoItem:TodoItem = source.todoItem
         
     if todoItem.itemName != "" {
         self.todoItems.append(todoItem)
