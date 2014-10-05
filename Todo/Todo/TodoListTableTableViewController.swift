@@ -10,8 +10,8 @@ class TodoListTableViewController: UITableViewController {
     var todoItems: [TodoItem] = []
     
     @IBAction func unwindAndAddToList(segue: UIStoryboardSegue) {
-        var source = segue.sourceViewController as AddTodoItemViewController
-        var todoItem:TodoItem = source.todoItem
+        let source = segue.sourceViewController as AddTodoItemViewController
+        let todoItem:TodoItem = source.todoItem
             
         if todoItem.itemName != "" {
             self.todoItems.append(todoItem)
@@ -38,7 +38,7 @@ class TodoListTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: false)
         
-        var tappedItem = todoItems[indexPath.row] as TodoItem
+        let tappedItem = todoItems[indexPath.row] as TodoItem
         tappedItem.completed = !tappedItem.completed
         
         tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.None)
@@ -46,8 +46,8 @@ class TodoListTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var tempCell = tableView.dequeueReusableCellWithIdentifier("ListPrototypeCell") as UITableViewCell
-        var todoItem = todoItems[indexPath.row]
+        let tempCell = tableView.dequeueReusableCellWithIdentifier("ListPrototypeCell") as UITableViewCell
+        let todoItem = todoItems[indexPath.row]
         
         // Downcast from UILabel? to UILabel
         let cell = tempCell.textLabel as UILabel!
