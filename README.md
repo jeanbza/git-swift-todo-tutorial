@@ -30,7 +30,7 @@ README version: xCode 6.0, Swift 1.0
 
 ## Foreword
 
-1. This tutorial is based on [Apple's xCode 5 Objective C TODO tutorial](https://developer.apple.com/library/ios/referencelibrary/GettingStarted/RoadMapiOS/index.html#//apple_ref/doc/uid/TP40011343-CH2-SW1), which is an excellent place to look for auxilliary context (and screenshots!)
+1. This tutorial is based on [Apple's xCode 5 Objective C TODO tutorial](https://developer.apple.com/library/ios/referencelibrary/GettingStarted/RoadMapiOS/index.html#//apple_ref/doc/uid/TP40011343-CH2-SW1), which is an excellent place to look for auxiliary context (and screenshots!)
 1. Check out the Todo folder for the completed code
 
 ## Installing This App
