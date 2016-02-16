@@ -1,8 +1,3 @@
-//
-//  ToDoListTableTableViewController.swift
-//  Todo
-//
-
 import UIKit
 
 class TodoListTableViewController: UITableViewController {
@@ -23,10 +18,6 @@ class TodoListTableViewController: UITableViewController {
         
     }
     
-    required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
-    
     func loadInitialData() {
         todoItems = [
             TodoItem(itemName: "Go to the dentist"),
@@ -45,8 +36,9 @@ class TodoListTableViewController: UITableViewController {
 
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let tempCell = tableView.dequeueReusableCellWithIdentifier("ListPrototypeCell") as UITableViewCell
+    override func tableView(tableView: UITableView?, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let foo = tableView!.dequeueReusableCellWithIdentifier("ListPrototypeCell") as UITableViewCell?
+        let tempCell = foo!
         let todoItem = todoItems[indexPath.row]
         
         // Downcast from UILabel? to UILabel

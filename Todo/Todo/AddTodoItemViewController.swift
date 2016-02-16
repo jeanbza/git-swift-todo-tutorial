@@ -1,12 +1,6 @@
-//
-//  AddToDoItemViewController.swift
-//  Todo
-//
-
 import UIKit
 
 class AddTodoItemViewController: UIViewController {
-
     var todoItem: TodoItem = TodoItem(itemName: "")
     
     @IBOutlet var doneButton: UIBarButtonItem!
@@ -17,8 +11,8 @@ class AddTodoItemViewController: UIViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
-        if (countElements(self.textField.text) > 0) {
-            self.todoItem = TodoItem(itemName: self.textField.text)
+        if (self.textField.text != "") {
+            self.todoItem = TodoItem(itemName: self.textField.text!)
         }
     }
     
