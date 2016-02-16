@@ -10,7 +10,7 @@ class TodoListTableViewController: UITableViewController {
     var todoItems: [TodoItem] = []
     
     @IBAction func unwindAndAddToList(segue: UIStoryboardSegue) {
-        let source = segue.sourceViewController as AddTodoItemViewController
+        let source = segue.sourceViewController as! AddTodoItemViewController
         let todoItem:TodoItem = source.todoItem
             
         if todoItem.itemName != "" {
