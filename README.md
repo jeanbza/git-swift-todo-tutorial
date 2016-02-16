@@ -1,6 +1,6 @@
 # Swift TODO App Tutorial
 
-CODE version: xCode 6.0, Swift 1.0
+CODE version: xCode 7.2.1, Swift 2.0
 
 README version: xCode 6.0, Swift 1.0
 
@@ -187,7 +187,7 @@ Your class should look like this
   import UIKit
 
   class ToDoItem: NSObject {
-     
+
   }
   ```
 
@@ -195,11 +195,11 @@ Your class should look like this
 1. Give it a name and completed variable and initialize them like so:
   ```swift
   import UIKit
-  
+
   class TodoItem: NSObject {
     let itemName: String
     var completed: Bool
-    
+
     init(itemName: String, completed: Bool = false) {
         self.itemName = itemName
         self.completed = completed
@@ -212,7 +212,7 @@ Your class should look like this
 1. Give it an array of TodoItems:
   ```
   var todoItems: [TodoItem] = []
-  
+
   ```
 1. Give it a loadInitialData function that populates your array with some basic things:
   ```swift
@@ -223,7 +223,7 @@ Your class should look like this
           TodoItem(itemName: "Sleep")
       ]
   }
-  
+
   ```
 1. Load your initial data from the viewDidLoad function:
   ```swift
@@ -231,21 +231,21 @@ Your class should look like this
       super.viewDidLoad()
       loadInitialData()
   }
-  
+
   ```
 1. Make the number of sections in your table one:
   ```swift
   override func numberOfSectionsInTableView(tableView: UITableView!) -> Int {
       return 1
   }
-  
+
   ```
 1. Next, let's create a function that returns the number of rows per section. Since we only have one section, we'll return a count of the todoItems. Add the following function:
   ```swift
   override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
       return todoItems.count
   }
-  
+
   ```
 <this function looks retarded because: https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Functions.html#//apple_ref/doc/uid/TP40014097-CH10-XID_202 (go to External Parameter Names>
 1. The last function we need will generate UITableViewCells for each row at a specific index
@@ -253,11 +253,11 @@ Your class should look like this
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
       let tempCell = tableView.dequeueReusableCellWithIdentifier("ListPrototypeCell") as UITableViewCell
       let todoItem = todoItems[indexPath.row]
-      
+
       // Downcast from UILabel? to UILabel
       let cell = tempCell.textLabel as UILabel!
       cell.text = todoItem.itemName
-      
+
       return tempCell
   }
   ```
@@ -274,15 +274,15 @@ Your class should look like this
   ```swift
   override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     tableView.deselectRowAtIndexPath(indexPath, animated: false)
-    
+
     let tappedItem = todoItems[indexPath.row] as TodoItem
     tappedItem.completed = !tappedItem.completed
-    
+
     tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.None)
   }
   ```
 1. Modify the tableView cell display function to have a checkmark if the item is finished
-  
+
   ```swift
   if (todoItem.completed) {
       tempCell.accessoryType = UITableViewCellAccessoryType.Checkmark;
@@ -295,17 +295,17 @@ Your class should look like this
   override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let tempCell = tableView.dequeueReusableCellWithIdentifier("ListPrototypeCell") as UITableViewCell
     let todoItem = todoItems[indexPath.row]
-    
+
     // Downcast from UILabel? to UILabel
     let cell = tempCell.textLabel as UILabel!
     cell.text = todoItem.itemName
-    
+
     if (todoItem.completed) {
         tempCell.accessoryType = UITableViewCellAccessoryType.Checkmark;
     } else {
         tempCell.accessoryType = UITableViewCellAccessoryType.None;
     }
-    
+
     return tempCell
   }
   ```
@@ -331,12 +331,12 @@ Your class should look like this
     }
   }  
   ```
-1. Now, we need to head back over to TodoListTableTableViewController.swift and add an unwind that takes the data that AddTodoItemViewController.swift is holding and pops into the array of todoItems: 
+1. Now, we need to head back over to TodoListTableTableViewController.swift and add an unwind that takes the data that AddTodoItemViewController.swift is holding and pops into the array of todoItems:
   ```swift
   @IBAction func unwindAndAddToList(segue: UIStoryboardSegue) {
     let source = segue.sourceViewController as AddTodoItemViewController
     let todoItem:TodoItem = source.todoItem
-        
+
     if todoItem.itemName != "" {
         self.todoItems.append(todoItem)
         self.tableView.reloadData()
