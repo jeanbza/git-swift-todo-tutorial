@@ -1,8 +1,3 @@
-//
-//  TodoItem.swift
-//  Todo
-//
-
 import UIKit
 
 class TodoItem: NSObject {
