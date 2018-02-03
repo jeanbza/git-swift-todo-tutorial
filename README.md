@@ -1,5 +1,7 @@
 # Swift TODO App Tutorial
 
+_Note:_ This repo is fairly out of date. Use at your own risk.
+
 CODE version: xCode 7.2.1, Swift 2.0
 
 README version: xCode 6.0, Swift 1.0
